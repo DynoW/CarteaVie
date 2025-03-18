@@ -1,3 +1,5 @@
+"use client"
+
 import { GoArrowUpRight } from 'react-icons/go';
 import type { FC, PropsWithChildren, MouseEventHandler } from 'react';
 
