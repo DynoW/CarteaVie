@@ -20,44 +20,12 @@ export const Footer = () => {
     };
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 w-full px-12 py-24 md:p-24 bg-slate-950 border-t-[1px] border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full px-12 py-24 md:p-24 bg-slate-950 border-t-[1px] border-slate-800">
             <div className="flex flex-col mb-12">
                 <h4 className="text-4xl font-bold">
                     CarteaVie
                 </h4>
-                <span className="text-sm font-light">Bring People Together</span>
-            </div>
-            <div className="flex flex-col w-full mx-auto md:flex-grow items-start md:items-center mb-12">
-                <h4 className="text-xl font-bold mb-4">
-                    Quick Links
-                </h4>
-                <ul className={`${styles.footerlink} flex flex-col md:flex-row gap-4`}>
-                    <li>
-                        <Link href="#about" passHref>
-                            <span onClick={(event) => handleScroll(event, 'about')}>About</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#ticket" passHref>
-                            <span onClick={(event) => handleScroll(event, 'ticket')}>Buy Ticket</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#location" passHref>
-                            <span onClick={(event) => handleScroll(event, 'location')}>Location</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#gallery" passHref>
-                            <span onClick={(event) => handleScroll(event, 'gallery')}>Gallery</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#contact" passHref>
-                            <span onClick={(event) => handleScroll(event, 'contact')}>Contact</span>
-                        </Link>
-                    </li>
-                </ul>
+                <span className="text-sm font-light">Evenimentul care transformă poveștile <br /> în experiențe interactive</span>
             </div>
             <div className="flex flex-col md:items-end items-start">
                 <h4 className="text-xl font-bold mb-4">

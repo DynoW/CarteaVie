@@ -61,7 +61,7 @@ export const Gallery = () => {
         <div id="gallery" className='bg-amber-950 flex flex-col w-full h-auto relative px-12 py-24 md:p-24 gap-6 overflow-hidden'>
             <p>Galerie foto</p>
             <h2 className='text-2xl md:text-4xl w-full md:max-w-3xl '>
-                Experience the magic of past festivals with our special photo gallery.
+                Ceva??
             </h2>
             <div className={`${styles.galleryBox} columns-2 md:columns-3`}>
                 {galleryImages.map((src, index) => (
