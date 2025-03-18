@@ -1,9 +1,15 @@
 "use client"
 
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './styles.module.css';
 
 export const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   const handleScroll = (
     event: React.UIEvent<HTMLDivElement> |
@@ -16,44 +22,90 @@ export const Header = () => {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
+    // Close mobile menu when a link is clicked
+    if (mobileMenuOpen) {
+      toggleMobileMenu();
+    }
   };
 
   return (
-    <nav className='hidden fixed w-[88vw] top 10px mx-auto py-5 md:flex flex-col gap-5 md:flex-row justify-between items-center z-50 bg-transparent'>
-      <div className='flex relative'>
-        <h1 className={`${styles.logoHeading} text-3xl font-bold mix-blend-difference drop-shadow-xl`}>
-          CarteaVie
-        </h1>
+    <>
+      {/* Mobile Navbar */}
+      <div className="fixed top-0 left-0 right-0 z-50 md:hidden">
+        <div className="flex items-center justify-between p-4">
+          <div className="text-xl font-bold">CarteaVie</div>
+          <button 
+            onClick={toggleMobileMenu}
+            className="p-2 focus:outline-none z-50 relative"
+          >
+            <div className={`w-6 h-0.5 ${mobileMenuOpen ? 'bg-black rotate-45 translate-y-2' : 'bg-white'} mb-1.5 transition-all duration-300`}></div>
+            <div className={`w-6 h-0.5 ${mobileMenuOpen ? 'bg-black opacity-0' : 'bg-white'} mb-1.5 transition-all duration-300`}></div>
+            <div className={`w-6 h-0.5 ${mobileMenuOpen ? 'bg-black -rotate-45 -translate-y-2' : 'bg-white'} transition-all duration-300`}></div>
+          </button>
+        </div>
+        
+        {/* Mobile Menu - Side Sliding */}
+        <div 
+          className={`fixed top-0 right-0 h-full w-64 bg-white text-black shadow-lg transform transition-transform duration-300 ease-in-out z-20 ${
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col items-start pt-20 px-6">
+            <span onClick={(event) => handleScroll(event, 'top')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Acasă</span>
+            <span onClick={(event) => handleScroll(event, 'about')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Despre</span>
+            <span onClick={(event) => handleScroll(event, 'schedule')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Program</span>
+            <span onClick={(event) => handleScroll(event, 'speakers')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Speakeri</span>
+            <span onClick={(event) => handleScroll(event, 'gallery')} className="py-4 px-2 hover:text-gray-600 font-medium w-full cursor-pointer">Galerie</span>
+          </div>
+        </div>
+        
+        {/* Overlay when menu is open */}
+        {mobileMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black/50 z-10 md:hidden"
+            onClick={toggleMobileMenu}
+            aria-hidden="true"
+          ></div>
+        )}
       </div>
-      <div className='flex px-6 py-4 justify-center bg-white/60 backdrop-blur-lg rounded-full text-slate-900 font-semibold text-sm'>
-        <ul className='flex flex-nowrap gap-5'>
-          <li>
-            <Link href="#" passHref>
-              <span onClick={(event) => handleScroll(event, 'top')}>Acasă</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="#about" passHref>
-              <span onClick={(event) => handleScroll(event, 'about')}>Despre</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="#personna" passHref>
-              <span onClick={(event) => handleScroll(event, 'personna')}>Personalități</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="#gallery" passHref>
-              <span onClick={(event) => handleScroll(event, 'gallery')}>Galerie</span>
-            </Link>
-          </li>
-          {/* <li>
-            <Link href="#contact" passHref>
-              <span onClick={(event) => handleScroll(event, 'contact')}>Contact</span>
-            </Link>
-          </li> */}
-        </ul>
-      </div>
-    </nav>
+
+      {/* Desktop Navbar */}
+      <nav className='hidden fixed w-[88vw] top 10px mx-auto py-5 md:flex flex-col gap-5 md:flex-row justify-between items-center z-50 bg-transparent'>
+        <div className='flex relative'>
+          <h1 className={`${styles.logoHeading} text-3xl font-bold mix-blend-difference drop-shadow-xl`}>
+            CarteaVie
+          </h1>
+        </div>
+        <div className='flex px-6 py-4 justify-center bg-white/60 backdrop-blur-lg rounded-full text-slate-900 font-semibold text-sm'>
+          <ul className='flex flex-nowrap gap-5'>
+            <li>
+              <Link href="#" passHref>
+                <span onClick={(event) => handleScroll(event, 'top')}>Acasă</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#about" passHref>
+                <span onClick={(event) => handleScroll(event, 'about')}>Despre</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#program" passHref>
+                <span onClick={(event) => handleScroll(event, 'program')}>Program</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#speakers" passHref>
+                <span onClick={(event) => handleScroll(event, 'speakers')}>Speakeri</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#gallery" passHref>
+                <span onClick={(event) => handleScroll(event, 'gallery')}>Galerie</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
   )
 }
