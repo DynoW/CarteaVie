@@ -1,24 +1,9 @@
 "use client"
 
 import React from 'react';
-import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter } from 'react-icons/fa';
-import styles from './styles.module.css';
 
 export const Footer = () => {
-    const handleScroll = (
-        event: React.UIEvent<HTMLDivElement> |
-            React.MouseEvent<HTMLAnchorElement> |
-            React.MouseEvent<HTMLSpanElement>,
-        targetId: string,
-    ) => {
-        event.preventDefault();
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 w-full px-12 py-24 md:p-24 bg-slate-950 border-t-[1px] border-slate-800">
             <div className="flex flex-col mb-12">

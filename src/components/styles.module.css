@@ -7,29 +7,6 @@ span.textOutline {
   color: transparent;
 }
 
-.galleryBox img {
-  margin-bottom: 12px;
-}
-
-.footerlink li {
-  cursor: pointer;
-  width: fit-content;
-}
-
-.footerlink li:after {
-  content: '';
-  width: 0%;
-  position: relative;
-  height: 1px;
-  background-color: #fff;
-  display: block;
-  transition: .3s ease-in-out;
-}
-
-.footerlink li:hover:after {
-  width: 100%;
-}
-
 .modal {
   position: fixed;
   top: 0;

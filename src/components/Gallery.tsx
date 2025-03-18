@@ -10,7 +10,7 @@ export const Gallery = () => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
     
-    const galleryImages = [''];
+    const galleryImages: string[] = [];
     
     const openImage = (index: number) => {
         setSelectedImage(index);
@@ -64,21 +64,25 @@ export const Gallery = () => {
                 Ceva??
             </h2>
             <div className={`${styles.galleryBox} columns-2 md:columns-3`}>
-                {galleryImages.map((src, index) => (
-                    <Image 
-                    key={index}
-                    alt={`gallery ${index + 1}`} 
-                    src={src}
-                    className={`mb-4 cursor-pointer hover:opacity-90 transition-opacity`}
-                    onClick={() => openImage(index)}
-                    width={500}
-                    height={500}
-                />
-                ))}
+                {galleryImages.length > 0 ? (
+                    galleryImages.map((src, index) => (
+                        <Image 
+                            key={index}
+                            alt={`gallery ${index + 1}`} 
+                            src={src}
+                            className={`mb-4 cursor-pointer hover:opacity-90 transition-opacity`}
+                            onClick={() => openImage(index)}
+                            width={500}
+                            height={500}
+                        />
+                    ))
+                ) : (
+                    <p>Nu sunt imagini disponibile</p>
+                )}
             </div>
             
-            {/* Image Modal */}
-            {selectedImage !== null && (
+           {/* Image Modal */}
+           {galleryImages.length > 0 && selectedImage !== null && (
                 <div className={styles.modal} onClick={closeModal}>
                     <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
                         <button className={styles.closeButton} onClick={closeModal}>&times;</button>
