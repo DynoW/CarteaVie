@@ -1,16 +1,42 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './styles.module.css';
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 40) {
+        // Scrolling down & past initial threshold
+        setIsVisible(false);
+      } else {
+        // Scrolling up or at top
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
+  // Enhanced smooth scroll function
   const handleScroll = (
     event: React.UIEvent<HTMLDivElement> |
       React.MouseEvent<HTMLAnchorElement> |
@@ -19,9 +45,30 @@ export const Header = () => {
   ) => {
     event.preventDefault();
     const targetElement = document.getElementById(targetId);
+    
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+      // Custom smooth scroll implementation for better browser support
+      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      const startPosition = window.scrollY;
+      const distance = targetPosition - startPosition;
+      const duration = 1000; // ms
+      let start: number | null = null;
+      
+      function step(timestamp: number) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const easeInOutQuad = (t: number): number => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        
+        window.scrollTo(0, startPosition + distance * easeInOutQuad(Math.min(progress / duration, 1)));
+        
+        if (progress < duration) {
+          window.requestAnimationFrame(step);
+        }
+      }
+      
+      window.requestAnimationFrame(step);
     }
+    
     // Close mobile menu when a link is clicked
     if (mobileMenuOpen) {
       toggleMobileMenu();
@@ -31,7 +78,7 @@ export const Header = () => {
   return (
     <>
       {/* Mobile Navbar */}
-      <div className="fixed top-0 left-0 right-0 z-50 md:hidden">
+      <div className={`fixed top-0 left-0 right-0 z-50 md:hidden transform transition-transform duration-300 ${isVisible ? 'translate-y-0 h-full' : '-translate-y-full'}`}>
         <div className="flex items-center justify-between p-4">
           <div className="text-xl font-bold">CarteaVie</div>
           <button 
