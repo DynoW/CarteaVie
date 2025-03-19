@@ -78,8 +78,8 @@ export const Header = () => {
   return (
     <>
       {/* Mobile Navbar */}
-      <div className={`fixed top-0 left-0 right-0 z-50 md:hidden transform transition-transform duration-300 ${isVisible ? 'translate-y-0 h-full' : '-translate-y-full'}`}>
-        <div className="flex items-center justify-between p-4">
+      <div className={`fixed top-0 left-0 right-0 z-50 md:hidden transform transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className="flex items-center justify-between p-4 ">
           <div className="text-xl font-bold">CarteaVie</div>
           <button 
             onClick={toggleMobileMenu}
@@ -93,7 +93,7 @@ export const Header = () => {
         
         {/* Mobile Menu - Side Sliding */}
         <div 
-          className={`fixed top-0 right-0 h-full w-64 bg-white text-black shadow-lg transform transition-transform duration-300 ease-in-out z-20 ${
+          className={`fixed top-0 right-0 h-screen w-64 bg-white text-black shadow-lg transform transition-transform duration-300 ease-in-out z-20 ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -109,7 +109,7 @@ export const Header = () => {
         {/* Overlay when menu is open */}
         {mobileMenuOpen && (
           <div 
-            className="fixed inset-0 bg-black/50 z-10 md:hidden"
+            className="fixed inset-0 h-screen bg-black/50 md:hidden"
             onClick={toggleMobileMenu}
             aria-hidden="true"
           ></div>
