@@ -132,3 +132,37 @@ span.textOutline {
   outline: 2px solid white;
   outline-offset: 2px;
 }
+
+.typingAnimation {
+  position: relative;
+  white-space: nowrap;
+}
+
+.typingAnimation::after {
+  content: none;
+}
+
+.cursor {
+  display: inline-block;
+  position: relative;
+  margin-left: 1px;
+  width: 5px;
+  height: 80%;
+  background-color: #fff;
+  position: absolute;
+  right: -4px;
+  top: 10%;
+}
+
+.cursorIdle {
+  animation: blink-caret 0.7s step-end infinite;
+}
+
+.cursorTyping {
+  opacity: 1;
+}
+
+@keyframes blink-caret {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
