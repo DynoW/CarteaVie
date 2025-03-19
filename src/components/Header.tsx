@@ -136,8 +136,8 @@ export const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="#program" passHref>
-                <span onClick={(event) => handleScroll(event, 'program')}>Program</span>
+              <Link href="#schedule" passHref>
+                <span onClick={(event) => handleScroll(event, 'schedule')}>Program</span>
               </Link>
             </li>
             <li>

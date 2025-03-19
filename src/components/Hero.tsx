@@ -6,7 +6,7 @@ import ArrowButton from './ui/ArrowButton';
 
 export const Hero = () => {
   return (
-    <div className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-62 md:pt-0 md:justify-center bg-[url('/minecraft.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
+    <div id="top" className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-62 md:pt-0 md:justify-center bg-[url('/minecraft.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
       <p>14 Martie 2025 | Liceul Teoretic &bdquo;Alexandru Ioan Cuza&rdquo;</p>
       <h1 className='text-5xl md:text-8xl font-bold mt-14'>
           CarteaVie<br/>
