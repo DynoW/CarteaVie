@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styles from './styles.module.css';
 import ArrowButton from './ui/ArrowButton';
+import EnchantingTable from './EnchantingTable';
 
 // Animation configuration constants
 const TYPING_CONFIG = {
@@ -116,10 +117,10 @@ export const Hero = () => {
   };
 
   return (
-    <div id="top" className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-62 md:pt-0 md:justify-center bg-[url('/minecraft.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
-      <p>14 Martie 2025 | Liceul Teoretic &bdquo;Alexandru Ioan Cuza&rdquo;</p>
-      <h1 className='text-5xl md:text-8xl font-bold mt-14'>
-        <div>Cartea</div>
+    <div id="top" className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-48 md:pt-0 md:justify-center bg-[url('/images/minecraft.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
+      <p className="font-sans">14 Martie 2025 | Liceul Teoretic &bdquo;Alexandru Ioan Cuza&rdquo;</p>
+      <h1 className="minecraft-bold text-5xl md:text-8xl font-bold mt-14">
+        <div className='font-minecraft'>Cartea</div>
         <div className="h-[1.2em] min-h-[1.2em]">
           <span className={`${styles.typingAnimation} ${loopNum % words.length !== 0 ? `${styles.textOutline} bg-clip-text text-transparent backdrop-blur-lg bg-white/20` : ''}`}>
             {displayText}
@@ -127,7 +128,8 @@ export const Hero = () => {
           </span>
         </div>
       </h1>
-      <ArrowButton onClick={(e) => handleScroll(e, 'about')} className="z-40 relative">CITEȘTE MAI MULT</ArrowButton>
+      <ArrowButton onClick={(e) => handleScroll(e, 'about')} className="z-40 relative font-minecraft">CITEȘTE MAI MULT</ArrowButton>
+      <EnchantingTable />
     </div>
   )
 }

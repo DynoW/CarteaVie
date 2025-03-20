@@ -15,3 +15,13 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+@font-face {
+  font-family: 'MinecraftBold';
+  src: url('/fonts/minecraft-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.minecraft-bold {
+  font-family: 'MinecraftBold', sans-serif;
+}

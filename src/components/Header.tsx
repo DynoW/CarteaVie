@@ -8,6 +8,7 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isRotated, setIsRotated] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -23,6 +24,13 @@ export const Header = () => {
       } else {
         // Scrolling up or at top
         setIsVisible(true);
+      }
+      
+      // Control logo rotation
+      if (currentScrollY > 100) {
+        setIsRotated(true);
+      } else {
+        setIsRotated(false);
       }
       
       setLastScrollY(currentScrollY);
@@ -117,9 +125,9 @@ export const Header = () => {
       </div>
 
       {/* Desktop Navbar */}
-      <nav className='hidden fixed w-[88vw] top 10px mx-auto py-5 md:flex flex-col gap-5 md:flex-row justify-between items-center z-50 bg-transparent'>
-        <div className='flex relative'>
-          <h1 className={`${styles.logoHeading} text-3xl font-bold mix-blend-difference drop-shadow-xl`}>
+      <nav className='hidden fixed w-[88vw] top 10px mx-auto py-5 md:flex flex-col gap-5 md:flex-row justify-end items-center z-50 bg-transparent'>
+        <div className={`${styles.logoContainer} ${isRotated ? styles.logoRotated : ''}`}>
+          <h1 className={`${styles.logoHeading} text-3xl font-bold mix-blend-difference drop-shadow-xl transition-all duration-500`}>
             CarteaVie
           </h1>
         </div>
