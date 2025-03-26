@@ -117,7 +117,7 @@ export const Hero = () => {
   };
 
   return (
-    <div id="top" className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-48 md:pt-0 md:justify-center bg-[url('/images/minecraft.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
+    <div id="top" className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-48 md:pt-0 md:justify-center bg-[url('/images/mine.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
       <p className="font-sans">14 Martie 2025 | Liceul Teoretic &bdquo;Alexandru Ioan Cuza&rdquo;</p>
       <h1 className="minecraft-bold text-5xl md:text-8xl font-bold mt-14">
         <div className='font-minecraft'>Cartea</div>
