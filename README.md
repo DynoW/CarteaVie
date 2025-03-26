@@ -105,4 +105,6 @@ Under the following terms:
 
 ## Credits
 
-- Minecraft font and 3D models used for educational/demonstration purposes
+- Minecraft-inspired fonts: "PurePixel" and "MadPixel" (Creative Commons licensed)
+- 3D model: [Enchanting Table](https://skfb.ly/6V7Qq) by Brendan George on Sketchfab (Creative Commons licensed)
+- All external assets used under their respective licenses with proper attribution

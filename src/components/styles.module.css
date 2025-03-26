@@ -162,11 +162,11 @@ span.textOutline {
   position: relative;
   margin-left: 1px;
   width: 5px;
-  height: 80%;
+  height: 91%;
   background-color: #fff;
   position: absolute;
   right: -4px;
-  top: 10%;
+  top: 1%;
 }
 
 .cursorIdle {
