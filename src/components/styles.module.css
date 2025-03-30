@@ -69,11 +69,6 @@ span.textOutline {
   z-index: 10;
 }
 
-.closeButton:focus {
-  outline: 2px solid white;
-  outline-offset: 2px;
-}
-
 .imageContainer {
   width: 100%;
   height: calc(100% - 100px);
@@ -89,6 +84,13 @@ span.textOutline {
   max-width: 100%;
   object-fit: contain;
   transition: transform 0.1s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+}
+
+.galleryBox img {
+  -webkit-user-drag: none;
   user-select: none;
 }
 
@@ -119,11 +121,6 @@ span.textOutline {
   transform: scale(0.98);
 }
 
-.navigation button:focus {
-  outline: 2px solid white;
-  outline-offset: 2px;
-}
-
 .zoomControls {
   display: flex;
   gap: 10px;
@@ -141,11 +138,6 @@ span.textOutline {
 
 .zoomControls button:hover {
   background-color: rgba(255, 255, 255, 0.3);
-}
-
-.zoomControls button:focus {
-  outline: 2px solid white;
-  outline-offset: 2px;
 }
 
 .typingAnimation {

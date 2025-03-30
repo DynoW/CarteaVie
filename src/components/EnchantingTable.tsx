@@ -84,7 +84,7 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
         setLoaded(true);
       },
       (xhr) => {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        console.log(xhr.loaded + ' bytes loaded');
       },
       (error) => {
         console.error('An error occurred loading the model:', error);
@@ -127,13 +127,13 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
-    
+
       // Gentle oscillation on mobile (left and right movement)
       if (isMobileRef.current && scene.children.length > 2) {
         // Create a gentle oscillation using sine wave with slower speed
         scene.rotation.y = Math.sin(Date.now() * 0.0003) * 0.2; // Slower oscillation with reduced amplitude
       }
-    
+
       controls.update();
       renderer.render(scene, camera);
     };
