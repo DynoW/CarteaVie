@@ -1,4 +1,4 @@
-Collecting workspace information# Cartea Vie - Interactive Event Website
+# Cartea Vie - Interactive Event Website
 
 ![Cartea Vie](public/images/mine.png)
 
@@ -55,7 +55,7 @@ This generates static HTML export in the `out` directory, ready for deployment t
 
 ## Project Structure
 
-```
+```text
 ├── public/            # Static assets
 │   ├── fonts/         # Custom fonts including Minecraft Bold
 │   ├── images/        # Image assets
