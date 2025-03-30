@@ -15,6 +15,8 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
   const [loaded, setLoaded] = useState(false);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const isMobileRef = useRef(false);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -32,10 +34,11 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
     // Setup camera with good viewing position
     const camera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
+      container.clientWidth / container.clientHeight,
       0.1,
       1000
     );
+    cameraRef.current = camera;
 
     camera.position.set(0, 0, 450);
 
@@ -44,7 +47,10 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
       antialias: true,
       alpha: true  // Transparent background
     });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    rendererRef.current = renderer;
+    
+    // Set size based on container dimensions, not window
+    renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setClearColor(0x000000, 0); // Transparent
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
@@ -91,18 +97,35 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
       }
     );
 
-    // Handle window resize
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+    // Handle viewport changes - both resize and scroll events
+    const updateViewport = () => {
+      if (!containerRef.current || !renderer || !camera) return;
+      
+      // Update container dimensions
+      const rect = containerRef.current.getBoundingClientRect();
+      
+      // Update camera aspect ratio
+      camera.aspect = rect.width / rect.height;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-
-      // Update mobile detection on resize
+      
+      // Update renderer size
+      renderer.setSize(rect.width, rect.height);
+      
+      // Update mobile detection
       isMobileRef.current = window.innerWidth <= 768 || ('ontouchstart' in window);
       controls.enabled = isMobileRef.current;
     };
 
-    window.addEventListener('resize', handleResize);
+    // Create a resize observer to detect changes in container size
+    const resizeObserver = new ResizeObserver(updateViewport);
+    resizeObserver.observe(container);
+
+    // Also listen for window resize and scroll events
+    window.addEventListener('resize', updateViewport);
+    window.addEventListener('scroll', updateViewport);
+    
+    // Run once to ensure initial size is correct
+    updateViewport();
 
     // Mouse movement handler for desktop rotation
     const handleMouseMove = (event: MouseEvent) => {
@@ -143,8 +166,10 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
     // Cleanup
     return () => {
       container.removeChild(renderer.domElement);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', updateViewport);
+      window.removeEventListener('scroll', updateViewport);
       window.removeEventListener('mousemove', handleMouseMove);
+      resizeObserver.disconnect();
       renderer.dispose();
     };
   }, []);
@@ -153,7 +178,13 @@ const EnchantingTable: React.FC<EnchantingTableProps> = ({ className }) => {
     <div
       ref={containerRef}
       className={`w-full h-full ${className} overflow-hidden`}
-      style={{ position: 'absolute', bottom: 0, left: 0, pointerEvents: 'none' }}
+      style={{ 
+        position: 'absolute', 
+        bottom: 0, 
+        left: 0, 
+        right: 0,
+        pointerEvents: 'none' 
+      }}
     >
       {!loaded && (
         <div className={styles.loadingSpinner}>
