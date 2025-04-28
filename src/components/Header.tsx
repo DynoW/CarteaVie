@@ -116,7 +116,7 @@ export const Header = () => {
             <span onClick={(event) => handleScroll(event, 'top')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Acasă</span>
             <span onClick={(event) => handleScroll(event, 'about')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Despre</span>
             {/* <span onClick={(event) => handleScroll(event, 'schedule')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Program</span> */}
-            {/* <span onClick={(event) => handleScroll(event, 'speakers')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Speakeri</span> */}
+            <span onClick={(event) => handleScroll(event, 'speakers')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Speakeri</span>
             <span onClick={(event) => handleScroll(event, 'gallery')} className="py-4 px-2 hover:text-gray-600 font-medium w-full cursor-pointer">Galerie</span>
           </div>
         </div>
@@ -155,11 +155,11 @@ export const Header = () => {
                 <span onClick={(event) => handleScroll(event, 'schedule')}>Program</span>
               </Link>
             </li> */}
-            {/* <li>
+            <li>
               <Link href="#speakers" passHref>
                 <span onClick={(event) => handleScroll(event, 'speakers')}>Speakeri</span>
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link href="#gallery" passHref>
                 <span onClick={(event) => handleScroll(event, 'gallery')}>Galerie</span>

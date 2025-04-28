@@ -39,6 +39,11 @@ export const Gallery = () => {
         // '/images/gallery/image-10.jpg',
         // '/images/gallery/image-11.jpg',
         '/images/gallery/image-12.jpg',
+        '/images/gallery/image-13.jpg',
+        '/images/gallery/image-14.jpg',
+        '/images/gallery/image-15.jpg',
+        '/images/gallery/image-16.jpg',
+        '/images/gallery/image-17.jpg',
     ];
 
     const openImage = (index: number) => {
