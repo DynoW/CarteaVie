@@ -8,10 +8,10 @@ const people = [
     name: "Dorica Boltașu",
     description: (
       <>
-      <p className="font-medium text-lg mb-3">
-        La ce este bună literatura? Vă mai există peste câteva decenii?
-      </p>
-      <blockquote className="italic border-l-4 border-gray-300 pl-4 py-2 text-gray-700">
+        <p className="font-medium text-lg mb-3">
+          La ce este bună literatura? Vă mai există peste câteva decenii?
+        </p>
+        <blockquote className="italic border-l-4 border-gray-300 pl-4 py-2 text-gray-700">
           &bdquo;Literatura are o forță uriașă pentru că folosește narațiunea, pentru a crea lumi, reproducând ceea ce este în mintea noastră. Ca formă de divertisment, cititul devine o evadare către noi experiențe. Literatura din viitor va discuta despre Inteligență artificială și Chat GPT, încercând să intuiască  temele, suferințele noastre, pentru că adolescenții generațiilor următoare nu vor ști să pună întrebări despre sensul vieții. Prin urmare, literatura este o terapie pentru suflet. Motivația proiectului Cartea Vie  este aceea că noi suntem cărți vii, în ADN-ul nostru există cultură, deși nu citim mult, ne rezumam la un ziar, o știre, citim pragmatic, nu serios.&rdquo;
         </blockquote>
       </>
@@ -48,7 +48,7 @@ const people = [
   },
 ];
 
-export function Awards() {
+export function Speakers() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -65,35 +65,60 @@ export function Awards() {
     <section id="speakers" className="w-full py-16 bg-amber-900">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl font-bold text-center mb-12 text-amber-400">Personalități și invitați</h2>
+        {/* Main content - switch to column on mobile */}
+        <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-8 h-[438px]">
+          {/* Mobile-only navigation buttons at top */}
+          <div className="flex w-full justify-between mb-4 lg:hidden">
+            <button
+              onClick={handlePrev}
+              className="bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
+            >
+              &larr; Anterior
+            </button>
+            {/* Navigation indicator for mobile */}
+            <div className="flex items-center justify-center text-amber-400">
+              <span>{currentIndex + 1} / {people.length}</span>
+            </div>
+            <button
+              onClick={handleNext}
+              className="bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
+            >
+              Următor &rarr;
+            </button>
+          </div>
 
-        <div className="flex flex-row items-center gap-8">
+          {/* Desktop-only previous button */}
           <button
             onClick={handlePrev}
-            className=""
+            className="hidden lg:block bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
           >
             &larr; Anterior
           </button>
 
-            <div className="w-full md:w-1/3 flex justify-center mb-6">
-            <div className="relative">
+          {/* Image - full width on mobile */}
+          <div className="w-full lg:w-1/3 flex justify-center mb-6 lg:mb-0">
+            <div className="relative w-full max-w-sm">
               <Image
-              src={currentPerson.image}
-              alt={currentPerson.name}
-              width={1000}
-              height={500}
-              className="rounded-2xl shadow-md"
+                src={currentPerson.image}
+                alt={currentPerson.name}
+                width={1000}
+                height={500}
+                className="rounded-2xl shadow-md w-full"
               />
-                <div className="absolute inset-0 bg-gradient-to-t from-amber-900 rounded-2xl opacity-40"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-amber-900 rounded-2xl opacity-40"></div>
             </div>
-            </div>
-          <div className="bg-white text-slate-900 p-6 rounded-lg shadow-sm w-full md:w-2/3">
+          </div>
+
+          {/* Content */}
+          <div className="bg-white text-slate-900 p-4 sm:p-6 rounded-lg shadow-sm w-full lg:w-2/3">
             <h3 className="text-xl font-semibold mb-2">{currentPerson.name}</h3>
             {currentPerson.description}
           </div>
 
+          {/* Desktop-only next button */}
           <button
             onClick={handleNext}
-            className=""
+            className="hidden lg:block bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
           >
             Următor &rarr;
           </button>

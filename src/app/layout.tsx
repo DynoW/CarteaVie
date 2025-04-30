@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Cartea Vie",
-  description: "Evenimentul care transformă poveștile în experiențe interactive",
+  description: "transformă poveștile în experiențe",
 };
 
 export default function RootLayout({

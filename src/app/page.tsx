@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Gallery } from "@/components/Gallery";
 import { Footer } from "@/components/Footer";
-import { Awards } from "@/components/Speakers";
+import { Speakers } from "@/components/Speakers";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
-      <Awards />
+      <Speakers />
       <Gallery />
       <Footer />
     </main>
