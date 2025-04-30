@@ -74,15 +74,18 @@ export function Awards() {
             &larr; Anterior
           </button>
 
-          <div className="w-full md:w-1/3 flex justify-center mb-6">
-            <Image
+            <div className="w-full md:w-1/3 flex justify-center mb-6">
+            <div className="relative">
+              <Image
               src={currentPerson.image}
               alt={currentPerson.name}
               width={1000}
               height={500}
-              className="rounded-2xl border-3 border-white shadow-md"
-            />
-          </div>
+              className="rounded-2xl shadow-md"
+              />
+                <div className="absolute inset-0 bg-gradient-to-t from-amber-900 rounded-2xl opacity-40"></div>
+            </div>
+            </div>
           <div className="bg-white text-slate-900 p-6 rounded-lg shadow-sm w-full md:w-2/3">
             <h3 className="text-xl font-semibold mb-2">{currentPerson.name}</h3>
             {currentPerson.description}

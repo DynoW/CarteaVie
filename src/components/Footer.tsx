@@ -1,14 +1,9 @@
 "use client"
 
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter } from 'react-icons/fa';
 import Image from 'next/image';
 
 export const Footer = () => {
-    const trackSocialClick = (platform: string) => {
-        window.umami?.track('social_link_click', { platform });
-    };
-
     return (
         <div className="relative flex flex-col w-full px-12 py-20 md:p-24 bg-slate-950 border-t-[1px] border-slate-800 gap-5">
             <div className="flex flex-col md:flex-row justify-between w-full gap-10">
