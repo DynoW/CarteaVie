@@ -79,7 +79,8 @@ export const Footer = () => {
                     className="underline"
                     onClick={() => window.umami?.track('credit_link_click', { type: '3d_model' })}
                 >Enchanting Table</a> by Brendan George</p>
-                <p className="mt-2">Site dezvoltat de: <a
+                 <p className="mt-2">Site dezvoltat de: Chirila Daniel Ștefan, Ștefan Gabriela, Dobre Costin Adrian și Cojocaru Tudor</p>
+                {/* <p className="mt-2">Site dezvoltat de: <a
                     href="https://github.com/chirilad"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -97,13 +98,13 @@ export const Footer = () => {
                     rel="noopener noreferrer"
                     className="underline hover:text-white"
                     onClick={() => window.umami?.track('developer_link_click', { name: 'dobre' })}
-                >Dobre Costin</a> and <a
+                >Dobre Costin Adrian</a> and <a
                     href="https://github.com/tudorcojocaru"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline hover:text-white"
                     onClick={() => window.umami?.track('developer_link_click', { name: 'cojocaru' })}
-                >Cojocaru Tudor</a></p>
+                >Cojocaru Tudor</a></p> */}
             </div>
         </div>
     )
