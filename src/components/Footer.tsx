@@ -29,7 +29,7 @@ export const Footer = () => {
                         className="rounded-md"
                     />
                     <br />
-                    <h4 className="text-xl font-bold mb-4">
+                    {/* <h4 className="text-xl font-bold mb-4">
                         Our Social Links
                     </h4>
                     <div className="flex gap-4">
@@ -69,12 +69,12 @@ export const Footer = () => {
                         >
                             <FaTwitter />
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
             {/* Copyright section - now at the bottom on mobile */}
-            <div className="mt-6 text-xs text-gray-400 md:absolute md:left-24 md:bottom-24">
+            <div className="mt-6 text-xs text-gray-400 md:absolute md:left-24 md:bottom-20">
                 <p>© CarteaVie 2025 - by Cuziștii | Credits:</p>
                 <p>Fonts: &quot;PurePixel&quot;, &quot;MadPixel&quot; (CC licensed)</p>
                 <p>3D Model: <a
