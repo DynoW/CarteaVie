@@ -66,12 +66,12 @@ export function Speakers() {
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl font-bold text-center mb-12 text-amber-400">Personalități și invitați</h2>
         {/* Main content - switch to column on mobile */}
-        <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-8 h-[438px]">
+        <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-8 lg:h-[438px]">
           {/* Mobile-only navigation buttons at top */}
           <div className="flex w-full justify-between mb-4 lg:hidden">
             <button
               onClick={handlePrev}
-              className="bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
+              className="bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
             >
               &larr; Anterior
             </button>
@@ -81,7 +81,7 @@ export function Speakers() {
             </div>
             <button
               onClick={handleNext}
-              className="bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
+              className="bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
             >
               Următor &rarr;
             </button>
@@ -90,9 +90,9 @@ export function Speakers() {
           {/* Desktop-only previous button */}
           <button
             onClick={handlePrev}
-            className="hidden lg:block bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
+            className="hidden lg:block bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
           >
-            &larr; Anterior
+            &larr;
           </button>
 
           {/* Image - full width on mobile */}
@@ -118,9 +118,9 @@ export function Speakers() {
           {/* Desktop-only next button */}
           <button
             onClick={handleNext}
-            className="hidden lg:block bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors"
+            className="hidden lg:block bg-amber-800 hover:bg-amber-700 text-amber-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
           >
-            Următor &rarr;
+            &rarr;
           </button>
         </div>
       </div>
