@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 const people = [
@@ -50,6 +50,37 @@ const people = [
 
 export function Speakers() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState<boolean | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Handle visibility detection for animation
+  useEffect(() => {
+    setIsVisible(false);
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? people.length - 1 : prevIndex - 1));
@@ -60,13 +91,32 @@ export function Speakers() {
   };
 
   const currentPerson = people[currentIndex];
+  const shouldAnimate = isVisible !== null;
 
   return (
-    <section id="speakers" className="w-full py-16 bg-amber-900">
+    <section 
+      id="speakers" 
+      ref={sectionRef}
+      className="w-full py-16 bg-amber-900"
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-amber-400">Personalități și invitați</h2>
+        <h2 
+          className={`text-3xl font-bold text-center mb-12 text-amber-400 minecraft-regular ${
+            shouldAnimate ? 'transition-all duration-700' : ''
+          } ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+          }`}
+        >
+          Personalități și invitați
+        </h2>
         {/* Main content - switch to column on mobile */}
-        <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-8 lg:h-[438px]">
+        <div 
+          className={`flex flex-col lg:flex-row items-center gap-4 lg:gap-8 lg:h-[438px] ${
+            shouldAnimate ? 'transition-all duration-1000 delay-200' : ''
+          } ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
+          }`}
+        >
           {/* Mobile-only navigation buttons at top */}
           <div className="flex w-full justify-between mb-4 lg:hidden">
             <button
@@ -96,7 +146,13 @@ export function Speakers() {
           </button>
 
           {/* Image - full width on mobile */}
-          <div className="w-full lg:w-1/3 flex justify-center mb-6 lg:mb-0">
+          <div 
+            className={`w-full lg:w-1/3 flex justify-center mb-6 lg:mb-0 ${
+              shouldAnimate ? 'transition-all duration-1000 delay-400' : ''
+            } ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+            }`}
+          >
             <div className="relative w-full max-w-sm">
               <Image
                 src={currentPerson.image}
@@ -110,8 +166,14 @@ export function Speakers() {
           </div>
 
           {/* Content */}
-          <div className="bg-white text-slate-900 p-4 sm:p-6 rounded-lg shadow-sm w-full lg:w-2/3">
-            <h3 className="text-xl font-semibold mb-2">{currentPerson.name}</h3>
+          <div 
+            className={`bg-white text-slate-900 p-4 sm:p-6 rounded-lg shadow-sm w-full lg:w-2/3 ${
+              shouldAnimate ? 'transition-all duration-1000 delay-600' : ''
+            } ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+            }`}
+          >
+            <h3 className="text-xl font-semibold mb-2 minecraft-regular">{currentPerson.name}</h3>
             {currentPerson.description}
           </div>
 

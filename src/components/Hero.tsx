@@ -23,6 +23,8 @@ const SCROLL_CONFIG = {
 export const Hero = () => {
   // Words to animate between
   const words = useMemo(() => ["Vie", "2025"], []);
+  // Dates to animate between
+  const dates = useMemo(() => ["14 Martie", "11 Aprilie", "12 Aprilie"], []);
 
   // Typing animation states
   const [displayText, setDisplayText] = useState("");
@@ -30,6 +32,13 @@ export const Hero = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isTyping, setIsTyping] = useState(true); // Track active typing state
   const [typingSpeed, setTypingSpeed] = useState(TYPING_CONFIG.NORMAL_TYPING_SPEED);
+  
+  // Date typing animation states
+  const [displayDate, setDisplayDate] = useState("");
+  const [isDeletingDate, setIsDeletingDate] = useState(false);
+  const [dateLoopNum, setDateLoopNum] = useState(0);
+  const [isTypingDate, setIsTypingDate] = useState(true);
+  const [dateTypingSpeed, setDateTypingSpeed] = useState(TYPING_CONFIG.NORMAL_TYPING_SPEED);
 
   // Setup typing animation with loop
   useEffect(() => {
@@ -88,6 +97,57 @@ export const Hero = () => {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, loopNum, typingSpeed, words]);
 
+  // Setup date typing animation with loop
+  useEffect(() => {
+    const handleDateTyping = () => {
+      setIsTypingDate(true); // Set cursor to solid when actively typing
+
+      setDisplayDate(prev => {
+        // Current full date
+        const date = dates[dateLoopNum % dates.length];
+
+        // If deleting, remove a character
+        if (isDeletingDate) {
+          const newText = date.substring(0, prev.length - 1);
+
+          // If deleted everything, switch to typing mode and next date
+          if (newText === '') {
+            setIsDeletingDate(false);
+            setDateTypingSpeed(TYPING_CONFIG.NORMAL_TYPING_SPEED);
+            setDateLoopNum(dateLoopNum + 1);
+            // Keep cursor solid for a moment after deletion completes
+            setTimeout(() => {
+              setIsTypingDate(false); // Start blinking after deletion completes
+            }, TYPING_CONFIG.DELETION_BLINK_DELAY);
+          }
+
+          return newText;
+        }
+        // If typing, add a character
+        else {
+          const newText = date.substring(0, prev.length + 1);
+
+          // If finished typing, wait longer then delete
+          if (newText === date) {
+            // Keep cursor solid briefly after finishing typing
+            setTimeout(() => {
+              setIsTypingDate(false); // Set cursor to blinking during pause
+              // Wait before starting to delete
+              setTimeout(() => setIsDeletingDate(true), TYPING_CONFIG.DELETION_DELAY);
+            }, TYPING_CONFIG.FIRST_WORD_BLINK_DELAY);
+
+            setDateTypingSpeed(TYPING_CONFIG.DELETION_SPEED);
+          }
+
+          return newText;
+        }
+      });
+    };
+
+    const timer = setTimeout(handleDateTyping, dateTypingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayDate, isDeletingDate, dateLoopNum, dateTypingSpeed, dates]);
+
   // Enhanced smooth scroll function with tracking
   const handleScroll = (event: React.MouseEvent, targetId: string) => {
     event.preventDefault();
@@ -121,7 +181,13 @@ export const Hero = () => {
 
   return (
     <div id="top" className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-[22vh] md:pt-0 md:justify-center bg-[url('/images/mine.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
-      <p className="font-sans">14 Martie 2025 | Liceul Teoretic &bdquo;Alexandru Ioan Cuza&rdquo;</p>
+      <p className="font-sans minecraft-regular">
+      {"Liceul Teoretic \u201EAlexandru Ioan Cuza\u201D | "}
+        <span className={`${styles.typingAnimation}`}>
+          {displayDate}
+          <span className={`${styles.cursorSmall} ${isTypingDate ? styles.cursorTyping : styles.cursorIdle}`}></span>
+        </span>
+      </p>
       <h1 className="minecraft-bold text-5xl md:text-8xl font-bold mt-14">
         <div>Cartea</div>
         <div className="h-[1.2em] min-h-[1.2em]">

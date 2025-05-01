@@ -125,7 +125,7 @@ export const Gallery = () => {
 
     return (
         <div id="gallery" className='bg-amber-950 flex flex-col w-full h-auto relative px-12 py-24 md:p-24 gap-6 overflow-hidden'>
-            <p>Galerie foto</p>
+            <h3 className="text-xl font-semibold minecraft-regular">Galerie foto</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {galleryImages.length > 0 ? (
                     galleryImages.map((src, index) => (

@@ -161,6 +161,18 @@ span.textOutline {
   top: 1%;
 }
 
+.cursorSmall {
+  display: inline-block;
+  position: relative;
+  margin-left: 1px;
+  width: 2.5px;
+  height: 91%;
+  background-color: #fff;
+  position: absolute;
+  right: -4px;
+  top: 1%;
+}
+
 .cursorIdle {
   animation: blink-caret 0.7s step-end infinite;
 }

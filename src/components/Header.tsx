@@ -112,12 +112,11 @@ export const Header = () => {
           className={`fixed top-0 right-0 h-screen w-64 bg-white text-black shadow-lg transform transition-transform duration-300 ease-in-out z-20 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
         >
-          <div className="flex flex-col items-start pt-20 px-6">
-            <span onClick={(event) => handleScroll(event, 'top')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Acasă</span>
-            <span onClick={(event) => handleScroll(event, 'about')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Despre</span>
-            {/* <span onClick={(event) => handleScroll(event, 'schedule')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Program</span> */}
-            <span onClick={(event) => handleScroll(event, 'speakers')} className="py-4 px-2 hover:text-gray-600 font-medium border-b border-gray-200 w-full cursor-pointer">Speakeri</span>
-            <span onClick={(event) => handleScroll(event, 'gallery')} className="py-4 px-2 hover:text-gray-600 font-medium w-full cursor-pointer">Galerie</span>
+          <div className="flex flex-col items-start pt-20 px-6 minecraft-regular hover:text-gray-600 font-medium">
+            <span onClick={(event) => handleScroll(event, 'top')} className="py-4 px-2 border-b border-gray-200 w-full cursor-pointer">Acasă</span>
+            <span onClick={(event) => handleScroll(event, 'about')} className="py-4 px-2 border-b border-gray-200 w-full cursor-pointer">Despre</span>
+            <span onClick={(event) => handleScroll(event, 'speakers')} className="py-4 px-2 border-b border-gray-200 w-full cursor-pointer">Speakeri</span>
+            <span onClick={(event) => handleScroll(event, 'gallery')} className="py-4 px-2 border-b border-gray-200 w-full cursor-pointer">Galerie</span>
           </div>
         </div>
 
@@ -138,7 +137,7 @@ export const Header = () => {
             CarteaVie
           </h1>
         </div>
-        <div className='flex px-6 py-4 justify-center bg-white/60 backdrop-blur-lg rounded-full text-slate-900 font-semibold text-sm'>
+        <div className='flex px-6 py-4 justify-center bg-white/60 backdrop-blur-lg rounded-full text-slate-900 font-semibold text-sm minecraft-regular'>
           <ul className='flex flex-nowrap gap-5'>
             <li>
               <Link href="#" passHref>
