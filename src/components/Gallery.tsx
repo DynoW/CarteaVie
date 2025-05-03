@@ -42,6 +42,8 @@ export const Gallery = () => {
         '/images/gallery/image-13.jpg',
         '/images/gallery/image-14.jpg',
         '/images/gallery/image-15.jpg',
+        '/images/gallery/image-18.jpg',
+        '/images/gallery/image-19.jpg',
         '/images/gallery/image-16.jpg',
         '/images/gallery/image-17.jpg',
     ];
