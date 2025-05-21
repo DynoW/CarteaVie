@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styles from './styles.module.css';
 import ArrowButton from './ui/ArrowButton';
 import EnchantingTable from './EnchantingTable';
+import Image from 'next/image';
 
 // Animation configuration constants
 const TYPING_CONFIG = {
@@ -32,7 +33,7 @@ export const Hero = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isTyping, setIsTyping] = useState(true); // Track active typing state
   const [typingSpeed, setTypingSpeed] = useState(TYPING_CONFIG.NORMAL_TYPING_SPEED);
-  
+
   // Date typing animation states
   const [displayDate, setDisplayDate] = useState("");
   const [isDeletingDate, setIsDeletingDate] = useState(false);
@@ -182,7 +183,7 @@ export const Hero = () => {
   return (
     <div id="top" className="relative px-12 md:px-24 w-full h-screen flex flex-col py-6 pt-[22vh] md:pt-0 md:justify-center bg-[url('/images/mine.png')] bg-no-repeat bg-cover md:bg-fixed bg-scroll bg-bottom">
       <p className="font-sans minecraft-regular">
-      {"Liceul Teoretic \u201EAlexandru Ioan Cuza\u201D | "}
+        {"Liceul Teoretic \u201EAlexandru Ioan Cuza\u201D | "}
         <span className={`${styles.typingAnimation}`}>
           {displayDate}
           <span className={`${styles.cursorSmall} ${isTypingDate ? styles.cursorTyping : styles.cursorIdle}`}></span>
@@ -199,6 +200,13 @@ export const Hero = () => {
       </h1>
       <ArrowButton onClick={(e) => handleScroll(e, 'about')} className="z-40 relative">CITEȘTE MAI MULT</ArrowButton>
       <EnchantingTable />
+      <Image
+        src="/images/laicuza.png"
+        alt="Laicuza"
+        width={100}
+        height={100}
+        className="rounded-md absolute bottom-5 right-5"
+      />
     </div>
   )
 }
