@@ -79,7 +79,7 @@ export const Footer = () => {
                     className="underline"
                     onClick={() => window.umami?.track('credit_link_click', { type: '3d_model' })}
                 >Enchanting Table</a> by Brendan George</p>
-                 <p className="mt-2">Site dezvoltat de: Chirila Daniel Ștefan, Ștefan Gabriela, Dobre Costin Adrian și Cojocaru Tudor</p>
+                 <p className="mt-2">Site dezvoltat de: Chirilă Daniel Ștefan, Ștefan Gabriela, Dobre Costin Adrian și Cojocaru Tudor</p>
                 {/* <p className="mt-2">Site dezvoltat de: <a
                     href="https://github.com/chirilad"
                     target="_blank"
