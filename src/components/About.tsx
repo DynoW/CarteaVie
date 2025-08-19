@@ -40,13 +40,15 @@ export const About = () => {
       }
     );
 
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
+    const node = aboutRef.current;
+
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, []);

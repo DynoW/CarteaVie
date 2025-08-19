@@ -31,8 +31,18 @@ Cartea Vie ("The Living Book") is an interactive event website for an upcoming e
 git clone https://github.com/yourusername/cartea-vie.pages.dev.git
 cd cartea-vie.pages.dev
 
-# Install dependencies
-npm install
+# Install dependencies with pnpm
+pnpm install
+```
+
+If you don't have `pnpm` installed locally, install it with npm (cross-platform):
+
+```bash
+# Install pnpm globally (works on Linux, macOS, and Windows with Node/npm installed)
+npm install -g pnpm
+
+# Verify pnpm is installed
+pnpm -v
 ```
 
 ## Development
@@ -40,7 +50,7 @@ npm install
 Run the development server with Turbopack for faster refresh:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the site in your browser.
@@ -48,7 +58,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site in your bro
 ## Building for Production
 
 ```bash
-npm run build
+pnpm build
 ```
 
 This generates static HTML export in the `out` directory, ready for deployment to any static hosting provider.
@@ -80,10 +90,10 @@ This generates static HTML export in the `out` directory, ready for deployment t
 
 ## Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
 
 ## Deployment
 
