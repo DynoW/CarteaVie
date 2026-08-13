@@ -20,7 +20,7 @@ export default function RootLayout({
       {process.env.NODE_ENV === 'production' && (
         <Script
           src="https://analytics.my-lab.ro/script.js"
-          data-website-id="2e7612db-57b7-480b-a6f2-abea928a9f50"
+          data-website-id="913d0974-e2ef-4e12-b384-c8c03b84ce2e"
           strategy="afterInteractive"
         />
       )}
